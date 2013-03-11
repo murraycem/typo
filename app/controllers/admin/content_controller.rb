@@ -240,9 +240,4 @@ class Admin::ContentController < Admin::BaseController
   def setup_resources
     @resources = Resource.by_created_at
   end
-
-  def merge (merge_id)
-    merge_with_article = Article.find(merge_id)
-    @article.title = merge_with_article.title + " merged"
-  end
 end
