@@ -155,7 +155,9 @@ class Admin::ContentController < Admin::BaseController
         end
       end
     end
-
+    if params[:merge_with]
+         merge params[:merge_with]
+    end
     @article.keywords = Tag.collection_to_string @article.tags
     @article.attributes = params[:article]
     # TODO: Consider refactoring, because double rescue looks... weird.
@@ -239,5 +241,10 @@ class Admin::ContentController < Admin::BaseController
 
   def setup_resources
     @resources = Resource.by_created_at
+  end
+
+  def merge (merge_id)
+    merge_with_article = Article.find(merge_id)
+    @article.title = merge_with_article.title + " merged"
   end
 end
