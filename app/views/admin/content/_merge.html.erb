@@ -1,0 +1,8 @@
+<% if @article and @article.id and current_user.admin? %>
+  <div class=''>
+    <h4><%= _("Merge Article") %></h4>
+    <ul id='mergeFile'>
+		<label for="5_id" style="width: 25%"><%= _("Article Id")%>:&nbsp;</label><input id="5_id" type="text" value="" style="width: 40%" size="30" name="merge_with" autocomplete="off">&nbsp;<%= save( _("Merge")) %>
+    </ul>
+  </div> 
+<% end %>
